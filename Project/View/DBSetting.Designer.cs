@@ -1,4 +1,4 @@
-﻿namespace Droid_database
+﻿namespace Droid_Database
 {
     partial class DBSetting
     {

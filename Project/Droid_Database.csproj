@@ -8,9 +8,9 @@
     <ProjectGuid>{D2C821F1-1CE1-4B0B-B87A-D59B0AE062A0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Droid_database</RootNamespace>
-    <AssemblyName>Droid_database</AssemblyName>
-    <TargetFrameworkVersion>v4.5</TargetFrameworkVersion>
+    <RootNamespace>Droid_Database</RootNamespace>
+    <AssemblyName>Droid_Database</AssemblyName>
+    <TargetFrameworkVersion>v4.5.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
   </PropertyGroup>

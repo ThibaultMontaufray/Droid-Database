@@ -5,7 +5,7 @@ using System.Text;
 using System.Windows.Forms;
 using System.Data;
 
-namespace Droid_database
+namespace Droid_Database
 {
     public delegate TreeViewDataBaseEventHander TreeViewDataBaseEventHander(string DBNodeVal);
     public class TreeViewDataBase : TreeView

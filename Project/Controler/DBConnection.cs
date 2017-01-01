@@ -12,7 +12,7 @@ using System.IO;
 //using Microsoft.SqlServer.Management.Smo;
 using Microsoft.SqlServer;
 
-namespace Droid_database
+namespace Droid_Database
 {
     public delegate DBConnectionEventHandler DBConnectionEventHandler();
 
