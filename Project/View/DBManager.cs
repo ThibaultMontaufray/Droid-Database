@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Droid_database
+namespace Droid_Database
 {
     public partial class DBManager : Panel
     {

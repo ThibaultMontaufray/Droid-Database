@@ -69,11 +69,11 @@
     <Compile Include="SqlCeAdapter.cs" />
     <Compile Include="MySqlAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
-    <Compile Include="View\DBDroid.cs">
+    <Compile Include="View\DBManager.cs">
       <SubType>Component</SubType>
     </Compile>
-    <Compile Include="View\DBDroid.Designer.cs">
-      <DependentUpon>DBDroid.cs</DependentUpon>
+    <Compile Include="View\DBManager.Designer.cs">
+      <DependentUpon>DBManager.cs</DependentUpon>
     </Compile>
     <Compile Include="View\DBSetting.cs">
       <SubType>Form</SubType>
@@ -86,8 +86,8 @@
     </Compile>
   </ItemGroup>
   <ItemGroup>
-    <EmbeddedResource Include="View\DBDroid.resx">
-      <DependentUpon>DBDroid.cs</DependentUpon>
+    <EmbeddedResource Include="View\DBManager.resx">
+      <DependentUpon>DBManager.cs</DependentUpon>
     </EmbeddedResource>
     <EmbeddedResource Include="View\DBSetting.resx">
       <DependentUpon>DBSetting.cs</DependentUpon>
