@@ -45,6 +45,31 @@
         #endregion
 
         #region Methods public
+        public static List<string> GetDatabases()
+        {
+            List<string> sysDatabases = new List<string>();
+            sysDatabases.Add("sys");
+            sysDatabases.Add("information_schema");
+            sysDatabases.Add("mysql");
+            sysDatabases.Add("performance_schema");
+            try
+            {
+                List<string> retVal = new List<string>();
+                foreach (var item in ExecuteReader("show databases"))
+                {
+                    if (!sysDatabases.Contains(item[0].ToLower()))
+                    { 
+                        retVal.Add(item[0]);
+                    }
+                }
+                return retVal;
+            }
+            catch (Exception exp)
+            {
+                Console.WriteLine("No database connection.");
+                return null;
+            }
+        }
         public static List<string> ShowTable()
         {
             try
@@ -123,7 +148,7 @@
             }
             catch (IOException exp4200)
             {
-                Log.write("[ ERR : 4200 ] Cannot export data from database.\n" + exp4200.Message);
+                Log.Write("[ ERR : 4200 ] Cannot export data from database.\n" + exp4200.Message);
                 return false;
             }
         }
@@ -201,7 +226,7 @@
             }
             catch (Exception exp4242)
             {
-                Log.write("[ ERR : 4242 ] Cannot execute query on database.\n" + exp4242.Message);
+                Log.Write("[ ERR : 4242 ] Cannot execute query on database.\n" + exp4242.Message);
                 return new List<string[]>();
             }
         }
