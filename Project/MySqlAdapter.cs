@@ -12,16 +12,22 @@
     public static class MySqlAdapter
     {
         #region Attribute
-        private static string _connectionString = @"Data Source={0};Database={1};Uid={2};Pwd={3};Persist Security Info=yes";
-        private static string _dumpBackupString = @" -u {0} -p {1} {2} --result-file ";
+        private const string CONNCECTIONSTRINGFORMAT = @"Data Source={0};Database={1};Uid={2};Pwd={3};Persist Security Info=yes";
+        private const string DUMPBACKUPSTRINGFORMAT = @" -u {0} -p {1} {2} --result-file ";
 
         private static string _user = Tools4Libraries.Params.DatabaseLogin; // like tmontaufray
         private static string _source = Tools4Libraries.Params.DatabaseHost; // localhost
         private static string _password = Tools4Libraries.Params.DatabasePassword; // Ch@ng3It
         private static string _database = Tools4Libraries.Params.DatabaseName; // mydatabasedev01
+        private static string _connectionString;
         #endregion
 
         #region Properties
+        public static string ConnectionString
+        {
+            get { return _connectionString; }
+            set { _connectionString = value; ParseConnectionString(); }
+        }
         public static string Database
         {
             get { return _database; }
@@ -111,7 +117,7 @@
         {
             try
             {
-                MySqlConnection conDatabase = new MySqlConnection(string.Format(_connectionString, _source, _database, _user, _password));
+                MySqlConnection conDatabase = new MySqlConnection(string.Format(CONNCECTIONSTRINGFORMAT, _source, _database, _user, _password));
                 MySqlCommand cmdDatabase = new MySqlCommand("show tables", conDatabase);
 
                 conDatabase.Open();
@@ -134,7 +140,7 @@
                     Process MySqlDump = new Process();
                     MySqlDump.StartInfo.FileName = @"mysqldump.exe";
                     MySqlDump.StartInfo.UseShellExecute = false;
-                    MySqlDump.StartInfo.Arguments = string.Format(_dumpBackupString, _user, _password, _database) + filePath;
+                    MySqlDump.StartInfo.Arguments = string.Format(DUMPBACKUPSTRINGFORMAT, _user, _password, _database) + filePath;
                     MySqlDump.StartInfo.RedirectStandardInput = false;
                     MySqlDump.StartInfo.RedirectStandardOutput = false;
 
@@ -159,7 +165,7 @@
                 try
                 {
                     string strCmd = File.ReadAllText(fileName);
-                    MySqlConnection conDatabase = new MySqlConnection(string.Format(_connectionString, _source, _database, _user, _password));
+                    MySqlConnection conDatabase = new MySqlConnection(string.Format(CONNCECTIONSTRINGFORMAT, _source, _database, _user, _password));
                     MySqlCommand cmdDatabase = new MySqlCommand(strCmd, conDatabase);
 
                     conDatabase.Open();
@@ -181,7 +187,7 @@
             {
                 try
                 {
-                    MySqlConnection conDatabase = new MySqlConnection(string.Format(_connectionString, _source, _database, _user, _password));
+                    MySqlConnection conDatabase = new MySqlConnection(string.Format(CONNCECTIONSTRINGFORMAT, _source, _database, _user, _password));
                     MySqlCommand cmdDatabase = new MySqlCommand(query, conDatabase);
 
                     string s = Environment.CurrentDirectory;
@@ -198,6 +204,35 @@
             }
             else return false;
         }
+        public static DataTable Query(string query)
+        {
+            try
+            {
+                DataTable dt = new DataTable();
+                List<string[]> ret = new List<string[]>();
+                if (!string.IsNullOrEmpty(query))
+                {
+                    MySqlConnection conDatabase = new MySqlConnection(string.Format(CONNCECTIONSTRINGFORMAT, _source, _database, _user, _password));
+                    MySqlCommand cmdDatabase = new MySqlCommand(query, conDatabase);
+
+                    conDatabase.Open();
+                    MySqlDataReader reader = cmdDatabase.ExecuteReader();
+
+                    dt.BeginLoadData();
+                    dt.Load(reader);
+                    dt.EndLoadData();
+
+                    conDatabase.Close();
+                    return dt;
+                }
+                return dt;
+            }
+            catch (Exception exp4242)
+            {
+                Log.Write("[ ERR : 4242 ] Cannot execute query on database.\n" + exp4242.Message);
+                return null;
+            }
+        }
         public static List<string[]> ExecuteReader(string query)
         {
             try
@@ -206,7 +241,7 @@
                 List<string[]> ret = new List<string[]>();
                 if (!string.IsNullOrEmpty(query))
                 {
-                    MySqlConnection conDatabase = new MySqlConnection(string.Format(_connectionString, _source, _database, _user, _password));
+                    MySqlConnection conDatabase = new MySqlConnection(string.Format(CONNCECTIONSTRINGFORMAT, _source, _database, _user, _password));
                     MySqlCommand cmdDatabase = new MySqlCommand(query, conDatabase);
 
                     conDatabase.Open();
@@ -232,7 +267,7 @@
         }
         public static void LoadData(string fileName, string table)
         {
-            MySqlConnection conDatabase = new MySqlConnection(string.Format(_connectionString, _source, _database, _user, _password));
+            MySqlConnection conDatabase = new MySqlConnection(string.Format(CONNCECTIONSTRINGFORMAT, _source, _database, _user, _password));
             MySqlBulkLoader loader = new MySqlBulkLoader(conDatabase);
             loader.TableName = table;
             loader.FileName = fileName;
@@ -258,7 +293,7 @@
 	                }
                     sb.Append(")");
 
-                    connection.ConnectionString = string.Format(_connectionString, _source, _database, _user, _password);
+                    connection.ConnectionString = string.Format(CONNCECTIONSTRINGFORMAT, _source, _database, _user, _password);
                     connection.Open();
                     cmd = connection.CreateCommand();
                     cmd.CommandText = sb.ToString();
@@ -291,6 +326,20 @@
                 }
             }
             return ds;
+        }
+        private static void ParseConnectionString()
+        {
+            if (!string.IsNullOrEmpty(_connectionString))
+            { 
+                string[] tab = _connectionString.Split(';');
+                if (tab.Length > 3)
+                {
+                    _source = tab[0].Split('=')[1];
+                    _database = tab[1].Split('=')[1];
+                    _user = tab[2].Split('=')[1];
+                    _password = tab[3].Split('=')[1];
+                }
+            }
         }
         #endregion
 
