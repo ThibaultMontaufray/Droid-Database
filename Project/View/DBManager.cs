@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Droid_Database
+namespace Droid.Database
 {
     public partial class DBManager : Panel
     {
@@ -109,15 +109,15 @@ namespace Droid_Database
         {
             LaunchQuery();
         }
-        private DBConnectionEventHandler _dbc_ResultChanged()
+        private void _dbc_ResultChanged()
         {
             //dataGridViewPreview.DataSource = _dbc.DBDataSet.Tables[0];
-            return null;
+            //return null;
         }
-        private DBConnectionEventHandler _dbc_ConnectionStatusChanged()
+        private void _dbc_ConnectionStatusChanged()
         {
             toolStripStatusLabelConnection.Text = _dbc.Status;
-            return null;
+            //return null;
         }
         private void textBoxQuery_KeyDown(object sender, KeyEventArgs e)
         {

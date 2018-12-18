@@ -7,7 +7,7 @@ using System.Linq;
 using System.Text;
 using System.Windows.Forms;
 
-namespace Droid_Database
+namespace Droid.Database
 {
     public partial class DBSetting : Form
     {

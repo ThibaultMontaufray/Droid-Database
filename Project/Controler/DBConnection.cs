@@ -12,9 +12,9 @@ using System.IO;
 //using Microsoft.SqlServer.Management.Smo;
 using Microsoft.SqlServer;
 
-namespace Droid_Database
+namespace Droid.Database
 {
-    public delegate DBConnectionEventHandler DBConnectionEventHandler();
+    public delegate void DBConnectionEventHandler();
 
     public class DBConnection
     {
@@ -81,7 +81,7 @@ namespace Droid_Database
         public void InitBase()
         {
             _sqlConnection = new SqlCeConnection();
-            _sqlConnection.ConnectionString = @"Data Source=C:\Users\Amos\Google_Drive\_Assistant\Assistant\TOBI\DATABASE\DBTOBI.sdf";
+            _sqlConnection.ConnectionString = string.Empty;// @"Data Source=C:\Users\Amos\Google_Drive\_Assistant\Assistant\TOBI\DATABASE\DBTOBI.sdf";
             _sda = new SqlCeDataAdapter();
             _ds = new DataSet();
             
@@ -263,10 +263,19 @@ namespace Droid_Database
             cmd.CommandText = "select * from TPARAM_INDEX";
             _sda.SelectCommand = cmd;
 
-            SqlCeCommandBuilder cb = new SqlCeCommandBuilder(_sda);
-            _sda.InsertCommand = cb.GetInsertCommand();
-            _sda.UpdateCommand = cb.GetUpdateCommand();
-            _sda.DeleteCommand = cb.GetDeleteCommand();
+            if (_sda != null)
+            {
+                try
+                {
+                    SqlCeCommandBuilder cb = new SqlCeCommandBuilder(_sda);
+                    _sda.InsertCommand = cb.GetInsertCommand();
+                    _sda.UpdateCommand = cb.GetUpdateCommand();
+                    _sda.DeleteCommand = cb.GetDeleteCommand();
+                }
+                catch (Exception)
+                {
+                }
+            }
         }
         /// <summary>
         /// this is common method created for Add,Update,Delete case.

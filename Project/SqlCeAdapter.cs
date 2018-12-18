@@ -8,14 +8,14 @@ using System.Data;
 using System.IO;
 using System.Windows.Forms;
 
-namespace Droid_Database
+namespace Droid.Database
 {
-    public enum DBType
-    {
-        BIT,
-        INT,
-        NVARCHART
-    }
+    //public enum DBType
+    //{
+    //    BIT,
+    //    INT,
+    //    NVARCHART
+    //}
 
     public class SqlCeAdapter
     {
