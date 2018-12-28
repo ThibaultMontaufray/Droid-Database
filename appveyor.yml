@@ -11,9 +11,9 @@ environment:
   COVERALLS_REPO_TOKEN:
     secure: 91BQ6ubpn/svk64KFyByeWiVLe0dvB8EDiUt8TORlBhm8wzB1GppTfu4Sse8XGT/
 before_build:
-  - nuget restore Droid_Database.sln
+  - nuget restore Droid.Database.sln
 build:
-  project: .\Droid_Database.sln
+  project: .\Droid.Database.sln
   verbosity: minimal
 test_script:
 - ps: >-
