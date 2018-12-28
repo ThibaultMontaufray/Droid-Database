@@ -142,13 +142,15 @@
     </Reference>
     <Reference Include="System.Windows.Forms" />
     <Reference Include="System.Windows.Forms.Ribbon, Version=3.5.8.4, Culture=neutral, processorArchitecture=MSIL">
-      <HintPath>..\..\servOfinance\ConsoleApplication1\packages\Tools4Libraries.1.0.21\lib\System.Windows.Forms.Ribbon.dll</HintPath>
-      <Private>True</Private>
+      <HintPath>packages\Tools4Libraries.1.0.21\lib\System.Windows.Forms.Ribbon.dll</HintPath>
     </Reference>
     <Reference Include="System.Xml.Linq" />
     <Reference Include="System.Data.DataSetExtensions" />
     <Reference Include="System.Data" />
     <Reference Include="System.Xml" />
+    <Reference Include="Tools4Libraries, Version=1.0.11.0, Culture=neutral, processorArchitecture=x86">
+      <HintPath>packages\Tools4Libraries.1.0.21\lib\Tools4Libraries.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Controler\DBAdapter.cs" />
@@ -199,12 +201,6 @@
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="TobiAppliKey.pfx" />
-  </ItemGroup>
-  <ItemGroup>
-    <ProjectReference Include="..\..\Tools4Libraries\Tools4Libraries.csproj">
-      <Project>{aad2b1be-9b2d-455d-8dd4-64e4e84dd985}</Project>
-      <Name>Tools4Libraries</Name>
-    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <PropertyGroup>

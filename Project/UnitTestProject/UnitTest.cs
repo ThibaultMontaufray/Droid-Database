@@ -1,4 +1,4 @@
-using Droid_Database;
+using Droid.Database;
 using NUnit.Framework;
 using System;
 
@@ -17,7 +17,7 @@ namespace UnitTestProject
         {
             try
             {
-                MySqlAdapter.ExecuteQuery("select * from information_schema.tables");
+                MySqlAdapter.ExecuteQuery(null, "select * from information_schema.tables");
                 Assert.IsTrue(true);
             }
             catch (Exception exp)
@@ -30,7 +30,7 @@ namespace UnitTestProject
         {
             try
             {
-                var v = MySqlAdapter.ExecuteReader("select * from information_schema.tables");
+                var v = MySqlAdapter.ExecuteReader(null, "select * from information_schema.tables");
                 Assert.IsTrue(true);
             }
             catch (Exception exp)
@@ -69,7 +69,7 @@ namespace UnitTestProject
         {
             try
             {
-                var v = MySqlAdapter.ShowTable();
+                var v = MySqlAdapter.ShowTable(null, null);
                 Assert.IsNotNull(v);
             }
             catch (Exception exp)

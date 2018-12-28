@@ -296,6 +296,7 @@
                             }
                             catch (Exception exp)
                             {
+                                Console.WriteLine(exp.Message);
                                 // TODO : see what we can do
                             }
                         }

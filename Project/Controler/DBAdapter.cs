@@ -291,7 +291,7 @@ namespace Droid.Database
             else
             {
                 throw new Exception("No database type");
-                return false;
+                //return false;
             }
         }
         #endregion
