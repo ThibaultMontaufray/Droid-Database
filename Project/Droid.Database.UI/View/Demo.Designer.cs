@@ -1,4 +1,4 @@
-﻿namespace Droid.Database
+﻿namespace Droid.Database.UI
 {
     partial class Demo
     {
@@ -28,7 +28,7 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.dbManager1 = new Droid.Database.DBManager();
+            this.dbManager1 = new Droid.Database.UI.DBManager();
             this.SuspendLayout();
             // 
             // dbManager1

@@ -65,8 +65,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\Droid.Database.csproj">
+    <ProjectReference Include="..\Droid.Database.UI\Droid.Database.UI.csproj">
       <Project>{d2c821f1-1ce1-4b0b-b87a-d59b0ae062a0}</Project>
+      <Name>Droid.Database.UI</Name>
+    </ProjectReference>
+    <ProjectReference Include="..\Droid.Database\Droid.Database.csproj">
+      <Project>{27f970a2-f49b-4111-9f55-d6c3aef13120}</Project>
       <Name>Droid.Database</Name>
     </ProjectReference>
   </ItemGroup>

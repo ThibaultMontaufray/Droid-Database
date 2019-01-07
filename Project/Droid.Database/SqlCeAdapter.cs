@@ -6,7 +6,6 @@ using System.Data.SqlServerCe;
 using System.Data.SqlClient;
 using System.Data;
 using System.IO;
-using System.Windows.Forms;
 
 namespace Droid.Database
 {
@@ -148,7 +147,7 @@ namespace Droid.Database
             }
             catch (Exception exp)
             {
-                MessageBox.Show("Aïe aïe aïe, there is again some bugs : \n\n" + exp.Message, "Crash !!!", MessageBoxButtons.OK, MessageBoxIcon.Error);
+                Console.WriteLine("Aïe aïe aïe, there is again some bugs : \n\n" + exp.Message);
             }
             return ls;
         }

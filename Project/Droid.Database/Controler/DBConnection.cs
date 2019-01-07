@@ -5,12 +5,12 @@ using System.Text;
 using System.Data.SqlServerCe;
 using System.Data.SqlClient;
 using System.Data;
-using System.Windows.Forms;
 using System.IO;
 
 //using Microsoft.SqlServer.Management.Common;
 //using Microsoft.SqlServer.Management.Smo;
 using Microsoft.SqlServer;
+using System.Collections;
 
 namespace Droid.Database
 {
@@ -130,15 +130,16 @@ namespace Droid.Database
             DataRow dr;
             FillDataInDataset(out oldData, out dr);
             //Here get record of specified id.
-            DataRow[] tempdata = oldData.Tables[0].AsEnumerable().Where(p => p["LABEL"].ToString() == id).ToArray();
-            if (tempdata.Length > 0)
-            {
-                dr = tempdata[0];
-                dr["LABEL"] = "FLEUR";
-                dr["TEMPO"] = "True";
-                dr["FROM"] = "DEFINITION";
-            }
-            _sda.Update(oldData);
+            Console.WriteLine("Get rid of this.");
+            //DataRow[] tempdata = oldData.Tables[0].Where(p => p["LABEL"].ToString() == id).ToArray();
+            //if (tempdata.Length > 0)
+            //{
+            //    dr = tempdata[0];
+            //    dr["LABEL"] = "FLEUR";
+            //    dr["TEMPO"] = "True";
+            //    dr["FROM"] = "DEFINITION";
+            //}
+            //_sda.Update(oldData);
             BindGrid();
         }
         /// <summary>
@@ -151,16 +152,17 @@ namespace Droid.Database
             DataRow dr;
             FillDataInDataset(out oldData, out dr);
             //Here get record of specified id.
-            DataRow[] tempdata = oldData.Tables[0].AsEnumerable().Where(p => p["LABEL"].ToString() == id).ToArray();
-            if (tempdata.Length > 0)
-            {
-                dr = tempdata[0];
-                dr["LABEL"] = "FLEUR";
-                dr["TEMPO"] = "True";
-                dr["FROM"] = "DEFINITION";
-                dr.Delete();
-            }
-            _sda.Update(oldData);
+            Console.WriteLine("Get rid of this.");
+            //DataRow[] tempdata = oldData.Tables[0].Where(p => p["LABEL"].ToString() == id).ToArray();
+            //if (tempdata.Length > 0)
+            //{
+            //    dr = tempdata[0];
+            //    dr["LABEL"] = "FLEUR";
+            //    dr["TEMPO"] = "True";
+            //    dr["FROM"] = "DEFINITION";
+            //    dr.Delete();
+            //}
+            //_sda.Update(oldData);
             BindGrid();
         }
 

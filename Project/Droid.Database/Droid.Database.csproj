@@ -1,0 +1,34 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <TargetFrameworks>netcoreapp2.1;net461</TargetFrameworks>
+    <Version>1.0.13</Version>
+    <Authors>Thibault MONTAUFRAY</Authors>
+    <Company>Servodroid</Company>
+    <Copyright>Copyright 2015</Copyright>
+    <PackageLicenseUrl>https://raw.githubusercontent.com/ThibaultMontaufray/Tools4Libraries/master/License</PackageLicenseUrl>
+    <PackageProjectUrl>https://github.com/ThibaultMontaufray/Droid-Database</PackageProjectUrl>
+    <PackageIconUrl>https://raw.githubusercontent.com/ThibaultMontaufray/Tools4Libraries/master/ManagersDevComponents/servodroidIconColor.png</PackageIconUrl>
+    <RepositoryUrl>https://github.com/ThibaultMontaufray/Droid-Database</RepositoryUrl>
+    <RepositoryType>github</RepositoryType>
+    <Description>Database adapter. In that version only for mysql but it should give a single inteface for all databases.</Description>
+    <PackageTags>Servodroid database mysql adapter</PackageTags>
+    <PackageRequireLicenseAcceptance>true</PackageRequireLicenseAcceptance>
+    <GeneratePackageOnBuild>true</GeneratePackageOnBuild>
+  </PropertyGroup>
+
+  <ItemGroup>
+    <PackageReference Include="CompareNETObjects" Version="4.57.0" />
+    <PackageReference Include="FubarDev.NDbUnit.Core" Version="1.6.9.11" />
+    <PackageReference Include="FubarDev.NDbUnit.SqlServerCe" Version="1.6.9.11" />
+    <PackageReference Include="Google.Protobuf" Version="3.6.1" />
+    <PackageReference Include="Microsoft.SqlServer.Compact" Version="4.0.8876.1" />
+    <PackageReference Include="MySql.Data" Version="8.0.13" />
+    <PackageReference Include="NDbUnit.Core" Version="1.6.8" />
+    <PackageReference Include="Npgsql" Version="4.0.4" />
+    <PackageReference Include="System.Runtime.CompilerServices.Unsafe" Version="4.5.2" />
+    <PackageReference Include="System.Threading.Tasks.Extensions" Version="4.5.1" />
+    <PackageReference Include="System.ValueTuple" Version="4.5.0" />
+  </ItemGroup>
+
+</Project>

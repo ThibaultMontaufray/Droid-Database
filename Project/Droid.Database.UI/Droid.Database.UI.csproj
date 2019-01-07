@@ -8,8 +8,8 @@
     <ProjectGuid>{D2C821F1-1CE1-4B0B-B87A-D59B0AE062A0}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>Droid.Database</RootNamespace>
-    <AssemblyName>Droid.Database</AssemblyName>
+    <RootNamespace>Droid.Database.UI</RootNamespace>
+    <AssemblyName>Droid.Database.UI</AssemblyName>
     <TargetFrameworkVersion>v4.6.1</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <TargetFrameworkProfile />
@@ -52,7 +52,7 @@
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)' == 'Debug|AnyCPU'">
     <DebugSymbols>true</DebugSymbols>
-    <OutputPath>lib\4..6.1\</OutputPath>
+    <OutputPath>lib\4.6.1\</OutputPath>
     <DefineConstants>DEBUG;TRACE</DefineConstants>
     <DebugType>full</DebugType>
     <PlatformTarget>x86</PlatformTarget>
@@ -157,13 +157,7 @@
     </Reference>
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="Controler\DBAdapter.cs" />
-    <Compile Include="Controler\DBConnection.cs" />
-    <Compile Include="Controler\PostgreSqlAdapter.cs" />
-    <Compile Include="Model\Enum.cs" />
     <Compile Include="Program.cs" />
-    <Compile Include="SqlCeAdapter.cs" />
-    <Compile Include="Controler\MySqlAdapter.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="View\DBManager.cs">
       <SubType>Component</SubType>
@@ -205,6 +199,12 @@
     <None Include="app.config" />
     <None Include="packages.config" />
     <None Include="TobiAppliKey.pfx" />
+  </ItemGroup>
+  <ItemGroup>
+    <ProjectReference Include="..\Droid.Database\Droid.Database.csproj">
+      <Project>{27f970a2-f49b-4111-9f55-d6c3aef13120}</Project>
+      <Name>Droid.Database</Name>
+    </ProjectReference>
   </ItemGroup>
   <Import Project="$(MSBuildToolsPath)\Microsoft.CSharp.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

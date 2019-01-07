@@ -1,4 +1,4 @@
-﻿namespace Droid.Database
+﻿namespace Droid.Database.UI
 {
     partial class DBManager
     {

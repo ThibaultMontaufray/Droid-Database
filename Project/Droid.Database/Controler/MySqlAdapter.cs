@@ -7,9 +7,6 @@
     using System.IO;
     using System.Diagnostics;
     using MySql.Data.MySqlClient;
-    using Tools4Libraries;
-    using System.ServiceProcess;
-    using System.Linq;
 
     public static class MySqlAdapter
     {
@@ -17,10 +14,10 @@
         private const string CONNCECTIONSTRINGFORMAT = @"Data Source={0};Database={1};Uid={2};Pwd={3};Persist Security Info=yes";
         private const string DUMPBACKUPSTRINGFORMAT = @" -u {0} -p {1} {2} --result-file ";
 
-        private static string _user = Tools4Libraries.Params.DatabaseLogin; // like tmontaufray
-        private static string _server = Tools4Libraries.Params.DatabaseHost; // localhost
-        private static string _password = Tools4Libraries.Params.DatabasePassword; // Ch@ng3It
-        private static string _database = Tools4Libraries.Params.DatabaseName; // mydatabasedev01
+        private static string _user = string.Empty; // Tools4Libraries.Params.DatabaseLogin; // like tmontaufray
+        private static string _server = string.Empty; //Tools4Libraries.Params.DatabaseHost; // localhost
+        private static string _password = string.Empty; //Tools4Libraries.Params.DatabasePassword; // Ch@ng3It
+        private static string _database = string.Empty; //Tools4Libraries.Params.DatabaseName; // mydatabasedev01
         private static string _connectionString;
         private static string _port;
         #endregion
@@ -179,7 +176,7 @@
             }
             catch (IOException exp4200)
             {
-                Log.Write("[ ERR : 4200 ] Cannot export data from database.\n" + exp4200.Message);
+                Console.WriteLine("[ ERR : 4200 ] Cannot export data from database.\n" + exp4200.Message);
                 return false;
             }
         }
@@ -254,7 +251,7 @@
             }
             catch (Exception exp4242)
             {
-                Log.Write("[ ERR : 4242 ] Cannot execute query on database.\n" + exp4242.Message);
+                Console.WriteLine("[ ERR : 4242 ] Cannot execute query on database.\n" + exp4242.Message);
                 return null;
             }
         }
@@ -309,7 +306,7 @@
             }
             catch (Exception exp4242)
             {
-                Log.Write("[ ERR : 4242 ] Cannot execute query on database.\n" + exp4242.Message);
+                Console.WriteLine("[ ERR : 4242 ] Cannot execute query on database.\n" + exp4242.Message);
                 return new DataTable();
             }
         }

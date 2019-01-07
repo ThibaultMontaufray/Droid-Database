@@ -1,11 +1,13 @@
 ﻿
 Microsoft Visual Studio Solution File, Format Version 12.00
-# Visual Studio 14
-VisualStudioVersion = 14.0.25420.1
+# Visual Studio 15
+VisualStudioVersion = 15.0.28010.2050
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Droid.Database", "Droid.Database.csproj", "{D2C821F1-1CE1-4B0B-B87A-D59B0AE062A0}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Droid.Database.UI", "Droid.Database.UI\Droid.Database.UI.csproj", "{D2C821F1-1CE1-4B0B-B87A-D59B0AE062A0}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "UnitTestProject", "UnitTestProject\UnitTestProject.csproj", "{0AF13185-9976-437D-AEBE-E4B9E5D20DC5}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Droid.Database", "Droid.Database\Droid.Database.csproj", "{27F970A2-F49B-4111-9F55-D6C3AEF13120}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -21,8 +23,15 @@ Global
 		{0AF13185-9976-437D-AEBE-E4B9E5D20DC5}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{0AF13185-9976-437D-AEBE-E4B9E5D20DC5}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{0AF13185-9976-437D-AEBE-E4B9E5D20DC5}.Release|Any CPU.Build.0 = Release|Any CPU
+		{27F970A2-F49B-4111-9F55-D6C3AEF13120}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{27F970A2-F49B-4111-9F55-D6C3AEF13120}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{27F970A2-F49B-4111-9F55-D6C3AEF13120}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{27F970A2-F49B-4111-9F55-D6C3AEF13120}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ExtensibilityGlobals) = postSolution
+		SolutionGuid = {5633440D-188B-424B-93CC-823345ECA59F}
 	EndGlobalSection
 EndGlobal

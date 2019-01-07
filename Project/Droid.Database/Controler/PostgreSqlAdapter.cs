@@ -7,7 +7,6 @@ using System.IO;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-using Tools4Libraries;
 
 namespace Droid.Database
 {
@@ -131,11 +130,18 @@ namespace Droid.Database
                 DataTable dt = new DataTable();
                 try
                 {
+                    string[] result = null;
                     _conn = new NpgsqlConnection(String.Format(CONNECTIONSTRING, _server, Port, _user, _password, _database));
                     _conn.Open();
                     dt = ExecuteReader(null, GETUSERS);
                     _conn.Close();
-                    return dt == null ? null : dt.AsEnumerable().Select(r => r.Field<string>("tablename")).ToArray();
+                    
+                    result = new string[dt.Rows.Count];
+                    for (int i = 0; i < dt.Rows.Count; i++)
+                    {
+                        result[i] = dt.Rows[i].ItemArray[0].ToString();
+                    }
+                    return result;
                 }
                 catch (Exception e)
                 {
@@ -298,9 +304,15 @@ namespace Droid.Database
         public static string[] ShowTables(string database, string schema)
         {
             DataTable dt = new DataTable();
+            string[] result = null;
             //dt = ExecuteReader(schema, "SELECT * FROM pg_catalog.pg_tables WHERE schemaname != 'pg_catalog' AND schemaname != 'information_schema';");
-            dt = ExecuteReader(database, string.Format("SELECT * FROM pg_catalog.pg_tables WHERE schemaname = '{0}';", schema));
-            return dt == null ? null : dt.AsEnumerable().Select(r => r.Field<string>("tablename")).ToArray();
+            dt = ExecuteReader(database, string.Format("SELECT tablename FROM pg_catalog.pg_tables WHERE schemaname = '{0}';", schema));
+            result = new string[dt.Rows.Count];
+            for (int i = 0; i < dt.Rows.Count; i++)
+            {
+                result[i] = dt.Rows[i].ItemArray[0].ToString();
+            }
+            return result;
         }
 
         public static DataTable Query(string schema, string connectionstring, string query)
@@ -520,7 +532,7 @@ namespace Droid.Database
             }
             catch (IOException exp4200)
             {
-                Log.Write("[ ERR : 4200 ] Cannot export data from database.\n" + exp4200.Message);
+                Console.WriteLine("[ ERR : 4200 ] Cannot export data from database.\n" + exp4200.Message);
                 return false;
             }
         }
