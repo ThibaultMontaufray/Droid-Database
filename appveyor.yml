@@ -13,7 +13,7 @@ environment:
 before_build:
   - nuget restore Droid.Database.sln
 build:
-  project: .\Droid.Database.sln
+  project: .\Project\Droid.Database.sln
   verbosity: minimal
 test_script:
 - ps: >-
