@@ -16,6 +16,7 @@ namespace Droid.Database
         private static string _server;
         private static string _password;
         private static string _database;
+        private static string _schema;
         #endregion
 
         #region Properties
@@ -53,6 +54,22 @@ namespace Droid.Database
                 else if (_dbType == DataBasesType.POSTGRESQL)
                 {
                     PostgreSqlAdapter.Database = _database;
+                }
+            }
+        }
+        public static string Schema
+        {
+            get { return _schema; }
+            set
+            {
+                _schema = value;
+                if (_dbType == DataBasesType.MYSQL)
+                {
+                    MySqlAdapter.Schema = _schema;
+                }
+                else if (_dbType == DataBasesType.POSTGRESQL)
+                {
+                    PostgreSqlAdapter.Schema = _schema;
                 }
             }
         }
@@ -188,15 +205,15 @@ namespace Droid.Database
                 return false;
             }
         }
-        public static DataTable ExecuteReader(string schema, string query)
+        public static DataTable ExecuteReader(string database, string query)
         {
             if (_dbType == DataBasesType.MYSQL)
             {
-                return MySqlAdapter.ExecuteReader(schema, query);
+                return MySqlAdapter.ExecuteReader(database, query);
             }
             else if (_dbType == DataBasesType.POSTGRESQL)
             {
-                return PostgreSqlAdapter.ExecuteReader(schema, query);
+                return PostgreSqlAdapter.ExecuteReader(database, query);
             }
             else
             {

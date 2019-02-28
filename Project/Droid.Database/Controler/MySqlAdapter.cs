@@ -20,6 +20,7 @@
         private static string _database = string.Empty; //Tools4Libraries.Params.DatabaseName; // mydatabasedev01
         private static string _connectionString;
         private static string _port;
+        private static string _schema;
         #endregion
 
         #region Properties
@@ -52,6 +53,11 @@
         {
             get { return _port; }
             set { _port = value; }
+        }
+        public static string Schema
+        {
+            get { return _schema; }
+            set { _schema = value; }
         }
         #endregion
 

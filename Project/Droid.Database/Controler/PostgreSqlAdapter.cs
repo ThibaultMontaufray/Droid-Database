@@ -37,9 +37,15 @@ namespace Droid.Database
         private static string _server;
         private static string _port;
         private static string _database;
+        private static string _schema;
         #endregion
 
         #region Properties
+        public static string Schema
+        {
+            get { return _schema; }
+            set { _schema = value; }
+        }
         public static  string Database
         {
             get { return _database; }
@@ -219,7 +225,7 @@ namespace Droid.Database
             DataTable table = ExecuteReader(database, string.Format("select * from pg_catalog.pg_namespace where nspname = '{0}';", name));
             return (table != null && table.Rows.Count > 0);
         }
-        public static DataTable ExecuteReader(string schema, string query)
+        public static DataTable ExecuteReader(string database, string query)
         {
             try
             {
@@ -229,7 +235,7 @@ namespace Droid.Database
                 DataColumn column;
                 DataRow row;
 
-                using (NpgsqlConnection conn = new NpgsqlConnection(string.Format("Server={0};User Id={1}; Password={2};Database={3};Port={4}", Server, User, Password, (string.IsNullOrEmpty(schema) ? "postgres" : schema), Port)))
+                using (NpgsqlConnection conn = new NpgsqlConnection(string.Format("Server={0};User Id={1}; Password={2};Database={3};Port={4}", Server, User, Password, (string.IsNullOrEmpty(database) ? "postgres" : database), Port)))
                 {
                     conn.Open();
                     NpgsqlCommand command = new NpgsqlCommand(query, conn);
