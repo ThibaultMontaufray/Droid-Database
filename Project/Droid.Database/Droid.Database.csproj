@@ -2,7 +2,7 @@
 
   <PropertyGroup>
     <TargetFrameworks>netcoreapp2.0;net461</TargetFrameworks>
-    <Version>1.0.14</Version>
+    <Version>1.0.15</Version>
     <Authors>Thibault MONTAUFRAY</Authors>
     <Company>Servodroid</Company>
     <Copyright>Copyright 2015</Copyright>

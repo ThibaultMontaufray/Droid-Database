@@ -191,13 +191,13 @@ namespace Droid.Database
                 return false;
             }
         }
-        public static bool ExecuteQuery(string schema, string query)
+        public static bool ExecuteQuery(string database, string query)
         {
             // TODO : use schema
             try
             {
                 CleanQuery(ref query);
-                using (NpgsqlConnection conn = new NpgsqlConnection(string.Format("Server={0};User Id={1}; Password={2};Database={3};;Port={4}", Server, User, Password, (string.IsNullOrEmpty(schema) ? "postgres" : schema), Port)))
+                using (NpgsqlConnection conn = new NpgsqlConnection(string.Format("Server={0};User Id={1}; Password={2};Database={3};;Port={4}", Server, User, Password, (string.IsNullOrEmpty(database) ? "postgres" : database), Port)))
                 {
                     conn.Open();
                     NpgsqlCommand command = new NpgsqlCommand(query.Replace('`', '\''), conn);
@@ -206,7 +206,7 @@ namespace Droid.Database
                 return true;
             }
             catch (Exception exp)
-            {
+        {
                 Console.WriteLine(exp.Message);
                 return false;
             }
@@ -291,7 +291,7 @@ namespace Droid.Database
         }
         public static DataTable Desc(string schema, string tableName)
         {
-            return ExecuteReader(schema, string.Format("select column_name, data_type, is_nullable, column_default from information_schema.columns  where table_name = '{0}.{1}';", schema, tableName));
+            return ExecuteReader(schema, string.Format("select column_name, data_type, is_nullable, column_default from information_schema.columns  where table_name = '{0}';", tableName));
         }
         public static void DropDatabase(string database)
         {
